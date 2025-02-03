@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const link = (
@@ -43,8 +43,13 @@ const Nav = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">{link}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end space-x-1">
+        <button className="btn btn-soft btn-info">
+          <Link to="/login">Login</Link>
+        </button>
+        <button className="btn btn-soft btn-info">
+          <Link to="/register">Register</Link>
+        </button>
       </div>
     </div>
   );
