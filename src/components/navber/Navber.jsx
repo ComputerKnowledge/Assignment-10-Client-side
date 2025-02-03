@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Auth } from "../../authprovider/AuthProvider";
 
 const Nav = () => {
+  const { user, logOutUser } = useContext(Auth);
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => {})
+      .catch((e) => {
+        console.log(e.message);
+      });
+  };
+  // console.log(user);
   const link = (
     <>
       <NavLink to="/">Home </NavLink>{" "}
@@ -8,7 +19,6 @@ const Nav = () => {
       <NavLink to="/addCampaign">Add New Campaign </NavLink>{" "}
       <NavLink to="/myCampaign">My Campaign </NavLink>{" "}
       <NavLink to="/donations">My Donations </NavLink>{" "}
-      <NavLink to="/">Home</NavLink>{" "}
     </>
   );
   return (
@@ -38,18 +48,29 @@ const Nav = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">{user ? user : "daisyUI"}</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">{link}</ul>
       </div>
-      <div className="navbar-end space-x-1">
-        <button className="btn btn-soft btn-info">
-          <Link to="/login">Login</Link>
-        </button>
-        <button className="btn btn-soft btn-info">
-          <Link to="/register">Register</Link>
-        </button>
+      <div className="navbar-end">
+        {!user ? (
+          <div className="space-x-1">
+            <button className="btn btn-soft btn-info">
+              <Link to="/login">Login</Link>
+            </button>
+            <button className="btn btn-soft btn-info">
+              <Link to="/register">Register</Link>
+            </button>
+          </div>
+        ) : (
+          <div>
+            {" "}
+            <button className="btn btn-soft btn-info" onClick={handleLogOut}>
+              Log Out
+            </button>{" "}
+          </div>
+        )}
       </div>
     </div>
   );

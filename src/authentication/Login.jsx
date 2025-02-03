@@ -1,6 +1,10 @@
+import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Auth } from "../authprovider/AuthProvider";
 
 const Login = () => {
+  const { loginUser, loginWithGoogle, changePassword } = useContext(Auth);
+  const emailRef = useRef();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -8,6 +12,24 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     form.reset();
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log(error.message));
+  };
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log(error));
+  };
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    changePassword(email)
+      .then(() => alert("Please check your email."))
+      .catch((e) => console.log(e.message));
   };
   return (
     <form onSubmit={handleLogin} className="hero bg-base-200 ">
@@ -20,6 +42,7 @@ const Login = () => {
             <fieldset className="fieldset">
               <label className="fieldset-label">Email</label>
               <input
+                ref={emailRef}
                 type="email"
                 className="input"
                 name="email"
@@ -33,7 +56,9 @@ const Login = () => {
                 placeholder="Password"
               />
               <div>
-                <a className="link link-hover">Forgot password?</a>
+                <a onClick={handleForgetPassword} className="link link-hover">
+                  Forgot password?
+                </a>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
@@ -43,6 +68,13 @@ const Login = () => {
                 register now
               </Link>
             </p>
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className="btn btn-ghost"
+            >
+              google
+            </button>
           </div>
         </div>
       </div>
