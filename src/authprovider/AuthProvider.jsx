@@ -1,15 +1,18 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const AssetContext = createContext(null);
+export const Auth = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(true);
   const allValue = {
-    name: "do it",
+    loading,
+    setLoading,
+    user,
+    setUser,
   };
 
-  return (
-    <AssetContext.Provider value={allValue}>{children}</AssetContext.Provider>
-  );
+  return <Auth.Provider value={allValue}>{children}</Auth.Provider>;
 };
 
 export default AuthProvider;
