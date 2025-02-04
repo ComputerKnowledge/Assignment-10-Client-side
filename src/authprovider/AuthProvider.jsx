@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -38,10 +37,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
-  const changePassword = (email) => {
-    setLoading(true);
-    return sendPasswordResetEmail(auth, email);
-  };
+
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (user) => {
       setUser(user?.email);
@@ -64,7 +60,6 @@ const AuthProvider = ({ children }) => {
     loginUser,
     loginWithGoogle,
     logOutUser,
-    changePassword,
   };
 
   return <Auth.Provider value={allValue}>{children}</Auth.Provider>;

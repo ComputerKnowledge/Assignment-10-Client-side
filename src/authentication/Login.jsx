@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Auth } from "../authprovider/AuthProvider";
 
 const Login = () => {
-  const { loginUser, loginWithGoogle, changePassword } = useContext(Auth);
+  const { loginUser, loginWithGoogle } = useContext(Auth);
   const emailRef = useRef();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -25,12 +25,7 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-  const handleForgetPassword = () => {
-    const email = emailRef.current.value;
-    changePassword(email)
-      .then(() => alert("Please check your email."))
-      .catch((e) => console.log(e.message));
-  };
+
   return (
     <form onSubmit={handleLogin} className="hero bg-base-200 ">
       <div className="hero-content flex-col my-20">
@@ -56,9 +51,7 @@ const Login = () => {
                 placeholder="Password"
               />
               <div>
-                <a onClick={handleForgetPassword} className="link link-hover">
-                  Forgot password?
-                </a>
+                <a className="link link-hover">Forgot password?</a>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
