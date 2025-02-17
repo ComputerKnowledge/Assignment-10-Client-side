@@ -20,30 +20,8 @@ const MyCampaign = () => {
             <td>Quality Control Specialist</td>
             <td>Blue</td>
             <td className="space-x-2">
-              <button className="btn btn-soft">Update</button>
-              <button className="btn btn-soft">Update</button>
-            </td>
-          </tr>
-          {/* row 2 */}
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-            <td className="space-x-2">
-              <button className="btn btn-soft">Update</button>
-              <button className="btn btn-soft">Update</button>
-            </td>
-          </tr>
-          {/* row 3 */}
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-            <td className="space-x-2">
-              <button className="btn btn-soft">Update</button>
-              <button className="btn btn-soft">Update</button>
+              <button className="btn btn-soft btn-primary">Update</button>
+              <button className="btn btn-soft btn-primary">Update</button>
             </td>
           </tr>
         </tbody>

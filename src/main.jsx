@@ -23,7 +23,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home></Home> },
-      { path: "/campaigns", element: <AllCampaign></AllCampaign> },
+      {
+        path: "/campaigns",
+        element: <AllCampaign></AllCampaign>,
+        loader: () => fetch("http://localhost:5000/campaigns"),
+      },
       {
         path: "/addCampaign",
         element: (
@@ -39,6 +43,8 @@ const router = createBrowserRouter([
             <DetailsCampaign></DetailsCampaign>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/campaign/${params.id}`),
       },
       {
         path: "/myCampaign",
@@ -47,6 +53,7 @@ const router = createBrowserRouter([
             <MyCampaign></MyCampaign>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/myCampaign"),
       },
       {
         path: "/donations",

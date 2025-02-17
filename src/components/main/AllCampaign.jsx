@@ -1,4 +1,15 @@
+import { useContext } from "react";
+import { Auth } from "../../authprovider/AuthProvider";
+import { Link, useLoaderData } from "react-router-dom";
+
 const AllCampaign = () => {
+  // const {} = useContext(Auth);
+  const data = useLoaderData();
+  // console.log(data);
+  const handleSeeMore = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -6,39 +17,30 @@ const AllCampaign = () => {
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Title</th>
             <th></th>
+            <th>Favorite Color</th>
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {/* row 1 */}
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-            <button className="btn btn-soft">See more</button>
-          </tr>
-          {/* row 2 */}
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-            <button className="btn btn-soft">See more</button>
-          </tr>
-          {/* row 3 */}
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-            <button className="btn btn-soft">See more</button>
-          </tr>
-        </tbody>
+        {data.map((data, idx) => (
+          <tbody key={data._id}>
+            <tr>
+              <th>{idx + 1}</th>
+              <td>{data.title}</td>
+              <td>Quality Control Specialist</td>
+              <td>{data._id}</td>
+              <td>
+                <button
+                  onClick={() => handleSeeMore(data._id)}
+                  className="btn btn-primary"
+                >
+                  <Link to={`/campaign/${data._id}`}>see more</Link>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        ))}
       </table>
     </div>
   );

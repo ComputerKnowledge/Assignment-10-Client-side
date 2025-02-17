@@ -17,6 +17,13 @@ const Register = () => {
       .then((result) => {
         console.log(result.user.email);
         setUser(result.user.email);
+        fetch("http://localhost:5000/addCampaign", {
+          method: "POST",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       })
       .catch((error) => console.log(error.message));
   };
