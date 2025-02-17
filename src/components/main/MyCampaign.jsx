@@ -1,30 +1,39 @@
+import { Link, useLoaderData } from "react-router-dom";
+
 const MyCampaign = () => {
+  const data = useLoaderData();
+  // console.log(data);
+
   return (
     <div className="overflow-x-auto">
       <table className="table text-right">
-        {/* head */}
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
+            <th>Title</th>
             <th>Job</th>
-            <th>Favorite Color</th>
+            <th>amount</th>
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {/* row 1 */}
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-            <td className="space-x-2">
-              <button className="btn btn-soft btn-primary">Update</button>
-              <button className="btn btn-soft btn-primary">Update</button>
-            </td>
-          </tr>
-        </tbody>
+        {data.map((data, idx) => (
+          <tbody key={data._id}>
+            <tr>
+              <th>{idx + 1}</th>
+              <td>{data.title}</td>
+              <td>Quality Control Specialist</td>
+              <td>{data.amount}</td>
+              <td className="space-x-2">
+                <Link to={`/updateCampaign/${data._id}`}>
+                  <button className="btn btn-soft btn-primary">Update</button>
+                </Link>
+                <Link to={``}>
+                  <button className="btn btn-soft btn-primary">Delete</button>
+                </Link>
+              </td>
+            </tr>
+          </tbody>
+        ))}
       </table>
     </div>
   );

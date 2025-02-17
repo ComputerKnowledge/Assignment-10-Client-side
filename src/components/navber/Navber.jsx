@@ -17,7 +17,7 @@ const Nav = () => {
       <NavLink to="/">Home </NavLink>{" "}
       <NavLink to="/campaigns">All Campaign </NavLink>{" "}
       <NavLink to="/addCampaign">Add New Campaign </NavLink>{" "}
-      <NavLink to="/myCampaign">My Campaign </NavLink>{" "}
+      <NavLink to={`/myCampaign/${user}`}>My Campaign </NavLink>{" "}
       <NavLink to="/donations">My Donations </NavLink>{" "}
     </>
   );
