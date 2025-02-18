@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
-import { Auth } from "../../authprovider/AuthProvider";
 
 const UpdateCampaign = () => {
   const data = useLoaderData();
