@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Auth } from "../authprovider/AuthProvider";
 
 const Register = () => {
-  const { registerUser, setUser } = useContext(Auth);
+  const { registerUser, setUser, updateUserProfile } = useContext(Auth);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,22 +11,31 @@ const Register = () => {
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
-    console.log(name, email, photoURL, password);
+    // const data = { name, email, photoURL };
+    const updateDate = { displayName: name, photoURL: photoURL };
     // form.reset();
     registerUser(email, password)
       .then((result) => {
-        console.log(result.user.email);
-        setUser(result.user.email);
-        fetch("http://localhost:5000/addCampaign", {
-          method: "POST",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+        console.log(result);
+
+        updateUserProfile(updateDate)
+          .then((result) => setUser(result))
+          .catch((error) => console.log(error.message));
+        // fetch("http://localhost:5000/users", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(data),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //   });
       })
       .catch((error) => console.log(error.message));
   };
+
   return (
     <form onSubmit={handleRegister} className="hero bg-base-200 ">
       <div className="hero-content flex-col my-20">

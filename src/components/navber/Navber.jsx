@@ -4,6 +4,7 @@ import { Auth } from "../../authprovider/AuthProvider";
 
 const Nav = () => {
   const { user, logOutUser } = useContext(Auth);
+  console.log(user);
   const handleLogOut = () => {
     logOutUser()
       .then(() => {})
@@ -11,6 +12,7 @@ const Nav = () => {
         console.log(e.message);
       });
   };
+
   // console.log(user);
   const link = (
     <>
@@ -48,7 +50,9 @@ const Nav = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">{user ? user : "daisyUI"}</a>
+        <a className="btn btn-ghost text-xl">
+          {user ? user.displayName : "daisyUI"}
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">{link}</ul>
@@ -64,8 +68,17 @@ const Nav = () => {
             </button>
           </div>
         ) : (
-          <div>
-            {" "}
+          <div className="flex gap-4 justify-center items-center">
+            <div className="relative group">
+              <img
+                className="rounded-full h-[50px]"
+                src={user?.photoURL}
+                alt="picture"
+              />{" "}
+              <div className="absolute opacity-0 group-hover:opacity-100 ">
+                <div className="w-20 ">{user?.displayName}</div>
+              </div>
+            </div>
             <button className="btn btn-soft btn-info" onClick={handleLogOut}>
               Log Out
             </button>{" "}
