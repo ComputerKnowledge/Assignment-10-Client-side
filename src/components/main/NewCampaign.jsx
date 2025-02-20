@@ -84,7 +84,7 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="email"
-            value={user}
+            value={user.email}
             onChange={handleThis}
           />
         </fieldset>

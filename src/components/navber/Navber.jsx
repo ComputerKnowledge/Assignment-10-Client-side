@@ -19,8 +19,8 @@ const Nav = () => {
       <NavLink to="/">Home </NavLink>{" "}
       <NavLink to="/campaigns">All Campaign </NavLink>{" "}
       <NavLink to="/addCampaign">Add New Campaign </NavLink>{" "}
-      <NavLink to={`/myCampaign/${user}`}>My Campaign </NavLink>{" "}
-      <NavLink to={`/donations/${user}`}>My Donations </NavLink>{" "}
+      <NavLink to={`/myCampaign/${user?.email}`}>My Campaign </NavLink>{" "}
+      <NavLink to={`/donations/${user?.email}`}>My Donations </NavLink>{" "}
     </>
   );
   return (
@@ -71,7 +71,7 @@ const Nav = () => {
           <div className="flex gap-4 justify-center items-center">
             <div className="relative group">
               <img
-                className="rounded-full h-[50px]"
+                className="rounded-full h-[40px]"
                 src={user?.photoURL}
                 alt="picture"
               />{" "}

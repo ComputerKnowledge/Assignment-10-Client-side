@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const MyDonation = () => {
   const data = useLoaderData();
-  // console.log(data);
+  console.log(data);
   return (
     <div>
       <h2>This is the MyDonation page.</h2>

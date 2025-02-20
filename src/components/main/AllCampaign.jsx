@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const AllCampaign = () => {
   // const {} = useContext(Auth);
   const data = useLoaderData();
-  // console.log(data);
+  console.log(data);
   const handleSeeMore = (id) => {
     console.log(id);
   };

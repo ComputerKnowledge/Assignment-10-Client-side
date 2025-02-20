@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../authprovider/AuthProvider";
 
 const Register = () => {
   const { registerUser, setUser, updateUserProfile } = useContext(Auth);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,7 +20,10 @@ const Register = () => {
         console.log(result);
 
         updateUserProfile(updateDate)
-          .then((result) => setUser(result))
+          .then((result) => {
+            setUser(result);
+            navigate("/");
+          })
           .catch((error) => console.log(error.message));
         // fetch("http://localhost:5000/users", {
         //   method: "POST",
