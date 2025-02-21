@@ -3,21 +3,21 @@ import { Link, useLoaderData } from "react-router-dom";
 const AllCampaign = () => {
   // const {} = useContext(Auth);
   const data = useLoaderData();
-  console.log(data);
-  const handleSeeMore = (id) => {
-    console.log(id);
-  };
+  // console.log(data);
+  // const handleSeeMore = (id) => {
+  //   console.log(id);
+  // };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto text-xs">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
-            <th></th>
+            <th>Index</th>
             <th>Title</th>
-            <th></th>
-            <th>Favorite Color</th>
+            <th>Added by</th>
+            <th>Last date</th>
             <th></th>
           </tr>
         </thead>
@@ -26,13 +26,10 @@ const AllCampaign = () => {
             <tr>
               <th>{idx + 1}</th>
               <td>{data.title}</td>
-              <td>Quality Control Specialist</td>
-              <td>{data._id}</td>
+              <td>{data.name}</td>
+              <td>{data.date}</td>
               <td>
-                <button
-                  onClick={() => handleSeeMore(data._id)}
-                  className="btn btn-primary"
-                >
+                <button className="btn btn-primary btn-xs sm:btn-md">
                   <Link to={`/campaign/${data._id}`}>see more</Link>
                 </button>
               </td>

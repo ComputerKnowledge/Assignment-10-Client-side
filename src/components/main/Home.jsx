@@ -5,11 +5,10 @@ const Home = () => {
   // console.log(data);
   return (
     <div>
-      <h3>This is the Home page.</h3>
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
+            src="https://media.licdn.com/dms/image/v2/D4E12AQE1CReHYOxLvQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1676005937400?e=2147483647&v=beta&t=3oDs8X1v_JJpfJzOLMeq4zwBidOTmwuv8hWdJaw4r78"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -23,7 +22,7 @@ const Home = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+            src="https://code-care.com/wp-content/uploads/2021/12/What-is-a-Crowdfunding-1.png"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -37,7 +36,7 @@ const Home = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
+            src="https://cdn.shopify.com/s/files/1/0070/7032/articles/BestCrowdfundingSites_resized-03_da571c91-d511-482f-81d8-abf24c0481f8.jpg?v=1730468327"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -51,7 +50,7 @@ const Home = () => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
+            src="https://media.geeksforgeeks.org/wp-content/uploads/20231212173723/Equity-Crowdfunding-copy.webp"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -64,8 +63,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <h3>Running Campaign Section:</h3>
-      <div className="grid grid-cols-2">
+      <h3 className="text-2xl sm:text-3xl font-bold">
+        These campaign is running !!!
+      </h3>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3">
         {data.map((data) => (
           <div key={data._id} className="card bg-base-100 w-96 shadow-sm">
             <figure className="px-10 pt-10">

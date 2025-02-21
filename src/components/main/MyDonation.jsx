@@ -2,19 +2,15 @@ import { useLoaderData } from "react-router-dom";
 
 const MyDonation = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
   return (
-    <div>
-      <h2>This is the MyDonation page.</h2>
-      <div className="grid grid-cols-2">
+    <div className=" mb-50">
+      <p className="text-2xl"> You have donated to these campaigns !!!</p>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3">
         {data.map((data) => (
           <div key={data._id} className="card bg-base-100 w-96 shadow-sm">
             <figure className="px-10 pt-10">
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-                className="rounded-xl"
-              />
+              <img src={data.thumbnail} alt="Shoes" className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">Card Title</h2>

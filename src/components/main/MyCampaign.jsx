@@ -39,14 +39,14 @@ const MyCampaign = () => {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto  mb-50">
       <table className="table text-right">
         <thead>
           <tr>
-            <th></th>
+            <th>Index</th>
             <th>Title</th>
-            <th>Job</th>
-            <th>amount</th>
+            <th>Added by</th>
+            <th>Last date</th>
             <th></th>
           </tr>
         </thead>
@@ -55,15 +55,17 @@ const MyCampaign = () => {
             <tr>
               <th>{idx + 1}</th>
               <td>{data.title}</td>
-              <td>Quality Control Specialist</td>
-              <td>{data.amount}</td>
-              <td className="space-x-2">
+              <td>{data.name}</td>
+              <td>{data.date}</td>
+              <td className="space-x-2 ">
                 <Link to={`/updateCampaign/${data._id}`}>
-                  <button className="btn btn-soft btn-primary">Update</button>
+                  <button className="btn btn-soft btn-primary btn-xs sm:btn-md">
+                    Update
+                  </button>
                 </Link>
 
                 <button
-                  className="btn btn-soft btn-primary"
+                  className="btn btn-soft btn-primary btn-xs sm:btn-md"
                   onClick={() => handleDelete(data._id)}
                 >
                   Delete

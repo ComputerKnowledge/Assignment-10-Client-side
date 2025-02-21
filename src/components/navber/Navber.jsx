@@ -4,7 +4,7 @@ import { Auth } from "../../authprovider/AuthProvider";
 
 const Nav = () => {
   const { user, logOutUser } = useContext(Auth);
-  console.log(user);
+  // console.log(user);
   const handleLogOut = () => {
     logOutUser()
       .then(() => {})
@@ -62,18 +62,18 @@ const Nav = () => {
       <div className="navbar-end">
         {!user ? (
           <div className="space-x-1">
-            <button className="btn btn-soft btn-info">
+            <button className="btn btn-soft btn-info btn-xs sm:btn-md">
               <Link to="/login">Login</Link>
             </button>
-            <button className="btn btn-soft btn-info">
+            <button className="btn btn-soft btn-info btn-xs sm:btn-md">
               <Link to="/register">Register</Link>
             </button>
           </div>
         ) : (
-          <div className="flex gap-4 justify-center items-center">
+          <div className=" sm:flex gap-4 justify-center items-center">
             <div className="relative group">
               <img
-                className="rounded-full h-[40px]"
+                className="rounded-full h-[40px] mb-4 sm:mb-0"
                 src={user?.photoURL}
                 alt="picture"
               />{" "}
@@ -81,7 +81,10 @@ const Nav = () => {
                 <div className="w-20 ">{user?.displayName}</div>
               </div>
             </div>
-            <button className="btn btn-soft btn-info" onClick={handleLogOut}>
+            <button
+              className="btn btn-soft btn-info btn-xs sm:btn-md"
+              onClick={handleLogOut}
+            >
               Log Out
             </button>{" "}
           </div>

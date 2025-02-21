@@ -10,14 +10,23 @@ const NewCampaign = () => {
     const form = e.target;
     const title = form.title.value;
     const type = form.type.value;
+    const thumbnail = form.thumbnail.value;
     const description = form.description.value;
     const amount = form.amount.value;
     const date = form.date.value;
     const email = form.email.value;
     const name = form.username.value;
-    console.log(title, type, description, amount, date, email, name);
-    const data = { title, type, description, amount, date, email, name };
-    console.log(data);
+    const data = {
+      title,
+      type,
+      thumbnail,
+      description,
+      amount,
+      date,
+      email,
+      name,
+    };
+    // console.log(data);
     fetch("http://localhost:5000/addCampaign", {
       method: "POST",
       headers: {
@@ -25,8 +34,8 @@ const NewCampaign = () => {
       },
       body: JSON.stringify(data),
     }).then((res) =>
-      res.json().then((data) => {
-        console.log(data);
+      res.json().then(() => {
+        // console.log(data);
         swal("success", "Your campaign has been deleted!", "success");
       })
     );
@@ -36,7 +45,6 @@ const NewCampaign = () => {
   };
   return (
     <div>
-      <h3>This is the newCampaign page.</h3>
       <form onSubmit={handleNewCampaign} className="sm:px-10 md:px-20 ">
         <fieldset className="fieldset">
           <label className="fieldset-legend">Campaign title</label>
@@ -45,6 +53,7 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="title"
+            required
           />
         </fieldset>
         <fieldset className="fieldset">
@@ -54,6 +63,17 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="type"
+            required
+          />
+        </fieldset>
+        <fieldset className="fieldset">
+          <label className="fieldset-legend">Thumbnail</label>
+          <input
+            type="text"
+            className="input w-full"
+            placeholder="link of picture"
+            name="thumbnail"
+            required
           />
         </fieldset>
         <fieldset className="fieldset">
@@ -63,6 +83,7 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="description"
+            required
           />
         </fieldset>
         <fieldset className="fieldset">
@@ -72,6 +93,7 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="amount"
+            required
           />
         </fieldset>
         <fieldset className="fieldset">
@@ -81,6 +103,7 @@ const NewCampaign = () => {
             className="input w-full"
             placeholder="Type here"
             name="date"
+            required
           />
         </fieldset>
         <fieldset className="fieldset">

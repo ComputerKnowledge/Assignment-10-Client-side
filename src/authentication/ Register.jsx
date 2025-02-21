@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../authprovider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { registerUser, setUser, updateUserProfile } = useContext(Auth);
@@ -15,29 +16,37 @@ const Register = () => {
     // const data = { name, email, photoURL };
     const updateDate = { displayName: name, photoURL: photoURL };
     // form.reset();
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title:
+          "password must contain at least one uppercase one lowercase and 6 character long.",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
+
     registerUser(email, password)
       .then((result) => {
         console.log(result);
 
-        updateUserProfile(updateDate)
-          .then((result) => {
-            setUser(result);
-            navigate("/");
-          })
-          .catch((error) => console.log(error.message));
-        // fetch("http://localhost:5000/users", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(data),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     console.log(data);
-        //   });
+        updateUserProfile(updateDate).then((result) => {
+          setUser(result);
+          navigate("/");
+        });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
 
   return (
@@ -55,6 +64,7 @@ const Register = () => {
                 className="input"
                 name="name"
                 placeholder="Name"
+                required
               />
               <label className="fieldset-label">Photo-URL</label>
               <input
@@ -62,6 +72,7 @@ const Register = () => {
                 className="input"
                 name="photoURL"
                 placeholder="Photo-URL"
+                required
               />
               <label className="fieldset-label">Email</label>
               <input
@@ -69,6 +80,7 @@ const Register = () => {
                 className="input"
                 name="email"
                 placeholder="Email"
+                required
               />
               <label className="fieldset-label">Password</label>
               <input
@@ -76,6 +88,7 @@ const Register = () => {
                 className="input"
                 name="password"
                 placeholder="Password"
+                required
               />
 
               <button className="btn btn-neutral mt-4">Register</button>

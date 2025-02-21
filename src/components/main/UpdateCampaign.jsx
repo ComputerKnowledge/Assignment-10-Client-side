@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateCampaign = () => {
   const data = useLoaderData();
@@ -16,14 +17,25 @@ const UpdateCampaign = () => {
     const name = form.username.value;
     // console.log(title, type, description, amount, date, email, name);
     const data = { title, type, description, amount, date, email, name };
-    console.log(data);
+    // console.log(data);
     fetch(`http://localhost:5000/updateCampaign/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((res) => res.json().then((data) => console.log(data)));
+    }).then((res) =>
+      res.json().then(() => {
+        // console.log(data);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Your data has been updated successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      })
+    );
   };
   const handleThis = () => {};
   return (

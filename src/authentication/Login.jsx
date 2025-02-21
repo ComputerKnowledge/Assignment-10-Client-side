@@ -1,6 +1,7 @@
 import { useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../authprovider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = useContext(Auth);
@@ -14,18 +15,37 @@ const Login = () => {
     console.log(email, password);
     form.reset();
     loginUser(email, password)
-      .then((result) => {
-        console.log(result);
+      .then(() => {
+        // console.log(result);
         navigate("/");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        // console.log(error.message);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then((result) => {
-        console.log(result);
+      .then(() => {
+        // console.log(result);
+        navigate("/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        // console.log(error);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
 
   return (
@@ -44,6 +64,7 @@ const Login = () => {
                 className="input"
                 name="email"
                 placeholder="Email"
+                required
               />
               <label className="fieldset-label">Password</label>
               <input
@@ -51,6 +72,7 @@ const Login = () => {
                 className="input"
                 name="password"
                 placeholder="Password"
+                required
               />
               <div>
                 <a className="link link-hover">Forgot password?</a>
