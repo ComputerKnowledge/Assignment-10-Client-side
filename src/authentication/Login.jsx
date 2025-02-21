@@ -12,15 +12,13 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
     form.reset();
     loginUser(email, password)
       .then(() => {
-        // console.log(result);
         navigate("/");
       })
       .catch((error) => {
-        // console.log(error.message);
         Swal.fire({
           position: "top",
           icon: "error",
@@ -33,11 +31,9 @@ const Login = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then(() => {
-        // console.log(result);
         navigate("/");
       })
       .catch((error) => {
-        // console.log(error);
         Swal.fire({
           position: "top",
           icon: "error",

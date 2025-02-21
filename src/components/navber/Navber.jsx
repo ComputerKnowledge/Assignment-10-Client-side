@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Auth } from "../../authprovider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Nav = () => {
   const { user, logOutUser } = useContext(Auth);
@@ -9,7 +10,13 @@ const Nav = () => {
     logOutUser()
       .then(() => {})
       .catch((e) => {
-        console.log(e.message);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: `${e.message}`,
+          showConfirmButton: false,
+          timer: 1000,
+        });
       });
   };
 
@@ -28,7 +35,7 @@ const Nav = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 mb-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

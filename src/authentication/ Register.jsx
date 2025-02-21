@@ -30,9 +30,7 @@ const Register = () => {
     }
 
     registerUser(email, password)
-      .then((result) => {
-        console.log(result);
-
+      .then(() => {
         updateUserProfile(updateDate).then((result) => {
           setUser(result);
           navigate("/");
