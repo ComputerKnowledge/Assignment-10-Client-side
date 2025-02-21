@@ -17,6 +17,7 @@ const UpdateCampaign = () => {
     const name = form.username.value;
     // console.log(title, type, description, amount, date, email, name);
     const data = { title, type, description, amount, date, email, name };
+    form.reset();
     // console.log(data);
     fetch(`https://server-red-tau.vercel.app/updateCampaign/${_id}`, {
       method: "PUT",

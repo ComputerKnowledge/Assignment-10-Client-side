@@ -26,6 +26,7 @@ const NewCampaign = () => {
       email,
       name,
     };
+    form.reset();
     // console.log(data);
     fetch("https://server-red-tau.vercel.app/addCampaign", {
       method: "POST",
