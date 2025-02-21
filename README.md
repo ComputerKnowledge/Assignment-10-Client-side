@@ -12,4 +12,4 @@ This is a **node and mongodb based project** . This is a crowdfunding website na
 
 # Live link of this project:
 
-- [https://assignment-10-8c968.web.app/addCampaign](https://assignment-10-8c968.web.app/addCampaign)
+- [https://assignment-10-8c968.web.app/](https://assignment-10-8c968.web.app/)
