@@ -27,7 +27,7 @@ const NewCampaign = () => {
       name,
     };
     // console.log(data);
-    fetch("http://localhost:5000/addCampaign", {
+    fetch("https://server-red-tau.vercel.app/addCampaign", {
       method: "POST",
       headers: {
         "content-type": "application/json",

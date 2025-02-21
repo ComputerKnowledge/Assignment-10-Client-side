@@ -25,12 +25,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/activeCampaigns"),
+        loader: () =>
+          fetch("https://server-red-tau.vercel.app/activeCampaigns"),
       },
       {
         path: "/campaigns",
         element: <AllCampaign></AllCampaign>,
-        loader: () => fetch("http://localhost:5000/campaigns"),
+        loader: () => fetch("https://server-red-tau.vercel.app/campaigns"),
       },
       {
         path: "/addCampaign",
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/campaign/${params.id}`),
+          fetch(`https://server-red-tau.vercel.app/campaign/${params.id}`),
       },
       {
         path: "/myCampaign/:email",
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/myCampaign/${params.email}`),
+          fetch(`https://server-red-tau.vercel.app/myCampaign/${params.email}`),
       },
       {
         path: "/donations/:email",
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/donations/${params.email}`),
+          fetch(`https://server-red-tau.vercel.app/donations/${params.email}`),
       },
       {
         path: "/updateCampaign/:id",
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/campaign/${params.id}`),
+          fetch(`https://server-red-tau.vercel.app/campaign/${params.id}`),
       },
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },

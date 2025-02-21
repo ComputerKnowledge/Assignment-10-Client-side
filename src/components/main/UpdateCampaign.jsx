@@ -18,7 +18,7 @@ const UpdateCampaign = () => {
     // console.log(title, type, description, amount, date, email, name);
     const data = { title, type, description, amount, date, email, name };
     // console.log(data);
-    fetch(`http://localhost:5000/updateCampaign/${_id}`, {
+    fetch(`https://server-red-tau.vercel.app/updateCampaign/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

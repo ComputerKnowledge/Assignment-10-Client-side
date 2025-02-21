@@ -19,7 +19,7 @@ const DetailsCampaign = () => {
   // console.log(currentDate, expireDate);
 
   const handleDonate = () => {
-    fetch("http://localhost:5000/donations", {
+    fetch("https://server-red-tau.vercel.app/donations", {
       method: "POST",
       headers: {
         "content-type": "application/json",
