@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Auth } from "../../authprovider/AuthProvider";
+import swal from "sweetalert";
 
 const NewCampaign = () => {
   const { user } = useContext(Auth);
@@ -23,10 +24,15 @@ const NewCampaign = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((res) => res.json().then((data) => console.log(data)));
+    }).then((res) =>
+      res.json().then((data) => {
+        console.log(data);
+        swal("success", "Your campaign has been deleted!", "success");
+      })
+    );
   };
   const handleThis = () => {
-    console.log("handleThis");
+    // console.log("handleThis");
   };
   return (
     <div>
@@ -93,7 +99,8 @@ const NewCampaign = () => {
 
           <input
             type="name"
-            // value={}
+            value={user.displayName}
+            onChange={handleThis}
             className="input w-full"
             placeholder="Type here"
             name="username"

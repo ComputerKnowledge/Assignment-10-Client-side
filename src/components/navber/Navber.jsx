@@ -18,9 +18,13 @@ const Nav = () => {
     <>
       <NavLink to="/">Home </NavLink>{" "}
       <NavLink to="/campaigns">All Campaign </NavLink>{" "}
-      <NavLink to="/addCampaign">Add New Campaign </NavLink>{" "}
-      <NavLink to={`/myCampaign/${user?.email}`}>My Campaign </NavLink>{" "}
-      <NavLink to={`/donations/${user?.email}`}>My Donations </NavLink>{" "}
+      {user && (
+        <>
+          <NavLink to="/addCampaign">Add New Campaign </NavLink>
+          <NavLink to={`/myCampaign/${user?.email}`}>My Campaign </NavLink>
+          <NavLink to={`/donations/${user?.email}`}>My Donations </NavLink>
+        </>
+      )}
     </>
   );
   return (
@@ -50,9 +54,7 @@ const Nav = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
-          {user ? user.displayName : "daisyUI"}
-        </a>
+        <a className="btn btn-ghost text-xl">Crowd Cube</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">{link}</ul>
