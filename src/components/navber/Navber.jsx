@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Auth } from "../../authprovider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Nav = () => {
   const { user, logOutUser } = useContext(Auth);
+  const [theme, setTheme] = useState("dark");
   // console.log(user);
   const handleLogOut = () => {
     logOutUser()
@@ -20,6 +21,13 @@ const Nav = () => {
       });
   };
 
+  const handleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   // console.log(user);
   const link = (
     <>
@@ -30,6 +38,12 @@ const Nav = () => {
           <NavLink to="/addCampaign">Add New Campaign </NavLink>
           <NavLink to={`/myCampaign/${user?.email}`}>My Campaign </NavLink>
           <NavLink to={`/donations/${user?.email}`}>My Donations </NavLink>
+          <button
+            className="sm:hidden btn btn-soft btn-info btn-xs sm:btn-md"
+            onClick={handleLogOut}
+          >
+            Log Out
+          </button>
         </>
       )}
     </>
@@ -54,6 +68,7 @@ const Nav = () => {
               />
             </svg>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -61,12 +76,20 @@ const Nav = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Crowd Cube</a>
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          Crowd Cube
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">{link}</ul>
       </div>
       <div className="navbar-end">
+        <input
+          type="checkbox"
+          value=""
+          className=" toggle theme-controller mr-4 "
+          onClick={handleTheme}
+        />
         {!user ? (
           <div className="space-x-1">
             <button className="btn btn-soft btn-info btn-xs sm:btn-md">
@@ -80,7 +103,7 @@ const Nav = () => {
           <div className=" sm:flex gap-4 justify-center items-center">
             <div className="relative group">
               <img
-                className="rounded-full h-[40px] mb-4 sm:mb-0"
+                className="rounded-full h-[40px] "
                 src={user?.photoURL}
                 alt="picture"
               />{" "}
@@ -89,7 +112,7 @@ const Nav = () => {
               </div>
             </div>
             <button
-              className="btn btn-soft btn-info btn-xs sm:btn-md"
+              className="hidden sm:block btn btn-soft btn-info btn-xs sm:btn-md"
               onClick={handleLogOut}
             >
               Log Out
