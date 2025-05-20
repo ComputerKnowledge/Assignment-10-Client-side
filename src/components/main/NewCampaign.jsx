@@ -45,8 +45,11 @@ const NewCampaign = () => {
     // console.log("handleThis");
   };
   return (
-    <div>
-      <form onSubmit={handleNewCampaign} className="sm:px-10 md:px-20 ">
+    <div className="mt-16">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold p-2 sm:p-4 lg:p-6 px-4">
+        Add a new Campaign
+      </h1>
+      <form onSubmit={handleNewCampaign} className="px-4 lg:px-0 ">
         <fieldset className="fieldset">
           <label className="fieldset-legend">Campaign title</label>
           <input

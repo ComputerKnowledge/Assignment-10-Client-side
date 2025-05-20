@@ -49,10 +49,14 @@ const Nav = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 mb-5">
+    <div className="navbar bg-base-100 shadow-sm p-0 px-4 lg:px-0 fixed top-0 mx-auto max-w-[1280px] z-50">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="p-0 pr-2 btn btn-ghost lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -76,7 +80,7 @@ const Nav = () => {
             {link}
           </ul>
         </div>
-        <Link to={"/"} className="btn btn-ghost text-xl">
+        <Link to={"/"} className="btn btn-ghost p-0 text-xl">
           Crowd Cube
         </Link>
       </div>
@@ -103,12 +107,12 @@ const Nav = () => {
           <div className=" sm:flex gap-4 justify-center items-center">
             <div className="relative group">
               <img
-                className="rounded-full h-[40px] "
+                className="w-8 h-8 sm:w-12 sm:h-12 rounded-full   "
                 src={user?.photoURL}
                 alt="picture"
               />{" "}
-              <div className="absolute opacity-0 group-hover:opacity-100 ">
-                <div className="w-20 ">{user?.displayName}</div>
+              <div className="absolute right-0 z-50 sm: opacity-0 group-hover:opacity-100 ">
+                <div className="w-20 bg-black">{user?.displayName}</div>
               </div>
             </div>
             <button
