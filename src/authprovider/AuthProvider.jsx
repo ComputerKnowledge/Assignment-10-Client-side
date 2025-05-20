@@ -9,6 +9,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase.init";
 import { GoogleAuthProvider } from "firebase/auth";
+import PropTypes from "prop-types";
 
 export const Auth = createContext(null);
 
@@ -71,6 +72,10 @@ const AuthProvider = ({ children }) => {
   };
 
   return <Auth.Provider value={allValue}>{children}</Auth.Provider>;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default AuthProvider;

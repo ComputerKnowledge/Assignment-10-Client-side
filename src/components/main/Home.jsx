@@ -1,65 +1,134 @@
+import { useRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 const Home = () => {
   const data = useLoaderData();
+  const slide1 = useRef(null);
+  const slide2 = useRef(null);
+  const slide3 = useRef(null);
+  const slide4 = useRef(null);
 
-  // console.log(data);
+  // console.3og(data)3
   return (
     <div>
-      <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full">
+      <div className="carousel overflow-hidden relative w-full">
+        <div ref={slide1} className="carousel-item w-full">
           <img
             src="https://media.licdn.com/dms/image/v2/D4E12AQE1CReHYOxLvQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1676005937400?e=2147483647&v=beta&t=3oDs8X1v_JJpfJzOLMeq4zwBidOTmwuv8hWdJaw4r78"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide4" className="btn btn-circle">
+            <button
+              onClick={() =>
+                slide4.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
+            </button>
+            <button
+              onClick={() =>
+                slide2.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❯
-            </a>
+            </button>
           </div>
         </div>
-        <div id="slide2" className="carousel-item relative w-full">
+        <div ref={slide2} className="carousel-item  snap-start relative w-full">
           <img
             src="https://code-care.com/wp-content/uploads/2021/12/What-is-a-Crowdfunding-1.png"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide1" className="btn btn-circle">
+            <button
+              onClick={() =>
+                slide1.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
+            </button>
+            <button
+              onClick={() =>
+                slide3.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❯
-            </a>
+            </button>
           </div>
         </div>
-        <div id="slide3" className="carousel-item relative w-full">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0070/7032/articles/BestCrowdfundingSites_resized-03_da571c91-d511-482f-81d8-abf24c0481f8.jpg?v=1730468327"
-            className="w-full"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide2" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide4" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide4" className="carousel-item relative w-full">
+        <div ref={slide3} className="carousel-item  snap-start relative w-full">
           <img
             src="https://media.geeksforgeeks.org/wp-content/uploads/20231212173723/Equity-Crowdfunding-copy.webp"
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide3" className="btn btn-circle">
+            <button
+              onClick={() =>
+                slide2.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle">
+            </button>
+            <button
+              onClick={() =>
+                slide4.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
               ❯
-            </a>
+            </button>
+          </div>
+        </div>
+        <div ref={slide4} className="carousel-item snap-start  relative w-full">
+          <img
+            src="https://ares.decipherzone.com/blog-manager/uploads/banner_dc873741-94c0-4fdf-b15e-f144baab3da8.jpg"
+            className="w-full"
+          />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <button
+              onClick={() =>
+                slide3.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
+              ❮
+            </button>
+            <button
+              onClick={() =>
+                slide1.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })
+              }
+              className="btn btn-circle"
+            >
+              ❯
+            </button>
           </div>
         </div>
       </div>
